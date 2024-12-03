@@ -51,7 +51,7 @@ const SketchPad = () => {
     const resizeCanvas = () => {
       const canvas = canvasRef.current;
       canvas.width = window.innerWidth * 0.8;  // 80% of the window width
-      canvas.height = window.innerHeight * 0.5; // 50% of the window height
+      canvas.height = window.innerHeight * 0.8; // 50% of the window height
     };
 
     window.addEventListener('resize', resizeCanvas);

@@ -1,52 +1,103 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  height: 100vh;  /* Full screen height */
+/* Global styles for html and body */
+html, body {
+  height: 100%; /* Ensure full viewport height */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent unwanted scrollbars */
 }
 
-/* Container holding the two sections (code editor and sketching area) */
+/* Custom variable for the sash size */
+:root {
+  --vscode-sash-size: 4px; /* Custom sash size */
+}
+
+/* Apply consistent box-sizing across all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root container for the application */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-color: #121212; /* Dark background */
+  color: #eaeaea; /* Light text */
+  overflow: hidden; /* Prevent child overflow */
+}
+
+/* Main container for the two sections (left and right) */
 .container {
   display: flex;
   width: 100%;
-  height: 100%;
-  gap: 1rem;  /* Space between the left and right sections */
+  height: 100%; /* Occupy full height of the viewport */
+  background-color: #1f1f1f; /* Darker container background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden; /* Prevent content from overflowing */
 }
 
-/* Left section for the code editor */
+/* Left section for code editor */
 .code-editor {
-  flex: 2;  /* This will take up more space (about 60-70%) */
-  height: 100%;
-  border-right: 2px solid #ddd; /* Optional: a separator line */
+  height: 100%; /* Allow it to take up 85% of available height */
+  flex: 1; /* Allow it to take up available space */
   padding: 1rem;
-  background-color: #f9f9f9;  /* Light background for the editor */
+  background-color: #1a1a1a; /* Even darker background */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  gap: 1rem;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
-/* Right section for the sketching area */
+/* Code editor textarea */
+textarea {
+  flex: none; /* Allow the text area to fill available space */
+  resize: none;
+  width: 100%;
+  height: 100%; /* Ensure it takes full height of its container */
+  padding: 10px;
+  background-color: #333;
+  color: #eaeaea;
+  border: 1px solid rgb(221, 221, 221); /* Add a border */
+  border-radius: 5px;
+  font-size: 1rem;
+  line-height: 1.5; /* Improve text readability */
+  overflow-y: auto; /* Vertical scrolling for overflow */
+}
+
+/* Right section for sketching area */
 .sketch-area {
-  flex: 1;  /* This will take up less space (about 30-40%) */
-  height: 100%;
+  flex: 1; /* Allow it to take up available space */
   padding: 1rem;
-  background-color: #f4f4f4;  /* Slightly darker background for sketching */
+  background-color: #1a1a1a; /* Dark background for sketch area */
+  color: #eaeaea; /* Light text */
+  overflow: auto; /* Allow scroll for overflow */
 }
 
-/* Optional: Styles for the title */
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+/* Resizer in the middle */
+.resizer {
+  width: var(--vscode-sash-size); /* Use the custom sash size */
+  cursor: ew-resize;
+  background-color: #555;
 }
 
-/* Make the content more responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack vertically on smaller screens */
-  }
+/* Button Styling */
+button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .code-editor, .sketch-area {
-    width: 100%;
-    height: auto;
-  }
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }

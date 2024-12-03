@@ -7,7 +7,7 @@ const CodeEditor = ({ code, setCode, language }) => {
   };
 
   return (
-    <div style={{ height: '100%', border: '1px solid #ddd' }}>
+    <div style={{ height: '80%', border: '1px solid #ddd' }}>
       <MonacoEditor
         height="100%"
         defaultLanguage={language} // Dynamically change language (e.g., 'javascript', 'java')
